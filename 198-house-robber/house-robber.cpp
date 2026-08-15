@@ -9,7 +9,6 @@ public:
 
     }
     int rob(vector<int>& nums) {
-        int ans=0;
         vector<int> dp(nums.size(),-1);
         return f(nums,0,dp);
     }
