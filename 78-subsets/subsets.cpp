@@ -1,29 +1,22 @@
 class Solution {
 public:
-    void f(vector<int> ref,vector<int> &nums,int k,vector<vector<int>> &ans){
-         //base case
-         if(k==nums.size()){
-             ans.push_back(ref);
-             return;
-         }
-         
-         //pick condition
-         ref.push_back(nums[k]);
-         f(ref,nums,k+1,ans);
-
-         //not pick condition
+    void f(vector<vector<int>> &ans,int i,vector<int>& nums,vector<int> &ref){
+        if(i>=nums.size()){
+            ans.push_back(ref);
+            return ;
+        }
+        //pick 
+        ref.push_back(nums[i]);
+        f(ans,i+1,nums,ref);
+        // not pick
         ref.pop_back();
-        f(ref,nums,k+1,ans);
-
+        f(ans,i+1,nums,ref);
 
     }
     vector<vector<int>> subsets(vector<int>& nums) {
-        //Pick not pick k liye do recursive functions call kardenge har ek
-        //element par
-        vector<int> ref;
         vector<vector<int>> ans;
-        int k=0;
-        f(ref,nums,k,ans);
+            vector<int> ref;
+            f(ans,0,nums,ref);
         return ans;
     }
 };
