@@ -6,21 +6,26 @@ public:
         int n=nums.size();
         int e=n-1;
         // edge case if size ==1 
-            while(nums[s]==nums[e]){
-            if(nums[s]==target)return true;
-            if(n>1){
-                s=s+1;
-                n=n-1;
-            }else if(n==1){
-                if(nums[s]!=target)return false;
-            }
-        }
+        //     while(nums[s]==nums[e]){
+        //     if(nums[s]==target)return true;
+        //     if(n>1){
+        //         s=s+1;
+        //         n=n-1;
+        //     }else if(n==1){
+        //         if(nums[s]!=target)return false;
+        //     }
+        // }
         int mid;
         while(s<=e){
             mid = (s+e)/2;
             if(nums[mid]==target)return true;
             // if left is sorted ?
-            if(nums[mid]>=nums[s]){
+            // basically we can not find the sorted part in this array as of now 
+            if(nums[s]==nums[mid] && nums[mid]==nums[e]){
+                s++;
+                e--;
+            }
+            else if(nums[mid]>=nums[s]){
                 // if lies in sorted region
                 if(target < nums[mid] && target >= nums[s]){
                     e=mid-1;
