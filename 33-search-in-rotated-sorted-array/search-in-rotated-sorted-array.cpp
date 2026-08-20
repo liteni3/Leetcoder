@@ -10,7 +10,7 @@ public:
             if(nums[mid]==target)return mid;
             //if left is sorted ?
             if(nums[mid]>=nums[s]){
-                if(nums[mid]>=target && target >=nums[s]){
+                if(nums[mid]>target && target >=nums[s]){
                     e=mid-1;
                 }else {
                     s=mid+1;
@@ -18,7 +18,7 @@ public:
             }
             // right is sorted ?
             else if(nums[mid]<=nums[e]) {
-                if(target >=nums[mid] && target <=nums[e]){
+                if(target >nums[mid] && target <=nums[e]){
                     s=mid+1;
                 }else {
                     e=mid-1;
