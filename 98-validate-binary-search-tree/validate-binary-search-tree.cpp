@@ -11,12 +11,15 @@
  */
 class Solution {
 public:
-    bool check (TreeNode* root,long long int min, long long int max){
+    bool helper(long long int left,long long int right,TreeNode* root){
         if(root==nullptr)return true;
-        if(root->val>=max || root->val<=min)return false;
-        return (check(root->left,min,root->val) && check(root->right,root->val,max));
+        if(root->val <= left || root->val >= right)return false;
+        return(helper(left,root->val,root->left) && helper(root->val,right,root->right));
     }
     bool isValidBST(TreeNode* root) {
-        return check(root,-1e18,1e18);
+        //Simple do the inorder traversal while maintaining the range
+        long long int left=-1e18;
+        long long int right=1e18;
+        return helper(left,right,root); 
     }
 };
