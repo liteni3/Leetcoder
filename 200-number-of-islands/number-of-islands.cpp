@@ -12,8 +12,7 @@ public:
             q.pop();
             for(int k=0;k<4;k++){
                 int r1=r+row[k];
-                int c1=c+col[
-                    k];
+                int c1=c+col[k];
                 if(r1>=0 && r1<grid.size() && c1>=0 && c1<grid[0].size() && grid[r1][c1]=='1'){
                     q.push({r1,c1});
                     grid[r1][c1]='0';
