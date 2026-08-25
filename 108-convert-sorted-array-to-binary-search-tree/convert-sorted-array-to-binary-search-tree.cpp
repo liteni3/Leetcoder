@@ -11,17 +11,17 @@
  */
 class Solution {
 public:
-    TreeNode* f(vector<int>& nums, int left, int right){
-        if(left>right)return nullptr;
-        int mid = (left+right)/2;
-        TreeNode* midNode = new TreeNode(nums[mid]);
-        //left and right
-        midNode->left = f(nums,left,mid-1);
-        midNode->right =f(nums,mid+1,right);
-        return midNode;
+    TreeNode* helper(vector<int>& nums,int s,int e){
+        int mid=(s+e)/2;
+        if(s>e)return NULL;
+        TreeNode* node = new TreeNode(nums[mid]);
+        node->left=helper(nums,s,mid-1);
+        node->right=helper(nums,mid+1,e);
+        return node;
     }
     TreeNode* sortedArrayToBST(vector<int>& nums) {
-        int n = nums.size();
-        return f(nums,0 , n-1);
+        // Since this is height balanced we are taking the mid 
+        int n=nums.size();
+        return helper(nums,0,n-1);
     }
 };
