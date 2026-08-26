@@ -14,7 +14,9 @@ public:
     bool helper(long long int left,long long int right,TreeNode* root){
         if(root==nullptr)return true;
         if(root->val <= left || root->val >= right)return false;
-        return(helper(left,root->val,root->left) && helper(root->val,right,root->right));
+       return (helper(left,root->val,root->left) &&  helper(root->val,right,root->right) );
+
+       // return true;
     }
     bool isValidBST(TreeNode* root) {
         //Simple do the inorder traversal while maintaining the range
